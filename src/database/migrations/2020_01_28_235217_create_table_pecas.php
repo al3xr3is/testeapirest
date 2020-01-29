@@ -20,7 +20,7 @@ class CreateTablePecas extends Migration
             $table->float('preco');
             $table->timestamps();
             $table->bigInteger('anunciante_id')->unsigned();
-            $table->bigInteger('pedido_id')->unsigned();
+            $table->bigInteger('pedido_id')->unsigned()->nullable();
         });
     }
 
