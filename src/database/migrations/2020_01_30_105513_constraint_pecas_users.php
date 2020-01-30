@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ConstraintPecaPedido extends Migration
+class ConstraintPecasUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -15,16 +15,9 @@ class ConstraintPecaPedido extends Migration
     {
         Schema::table('pecas', function (Blueprint $table) {
             Schema::table('pecas', function($table) {
-                $table->foreign('anunciante_id')
+                $table->foreign('users_id')
                     ->references('id')
-                    ->on('anunciantes')
-                    ->onDelete('cascade');
-              });
-
-              Schema::table('pecas', function($table) {
-                $table->foreign('pedido_id')
-                    ->references('id')
-                    ->on('pedidos')
+                    ->on('users')
                     ->onDelete('cascade');
               });
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableAnunciante extends Migration
+class CreatePecas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateTableAnunciante extends Migration
      */
     public function up()
     {
-        Schema::create('anunciantes', function (Blueprint $table) {
+        Schema::create('pecas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('contato');
-            $table->enum('tipo',['anunciante', 'administrador']);
+            $table->string('name');
+            $table->string('description');
+            $table->bigInteger('users_id')->unsigned();
             $table->timestamps();
-            $table->bigInteger('peca_id')->unsigned()->nullable();
-            $table->bigInteger('pedido_id')->unsigned()->nullable();
         });
     }
 
@@ -31,6 +29,6 @@ class CreateTableAnunciante extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anunciantes');
+        Schema::dropIfExists('pecas');
     }
 }

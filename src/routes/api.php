@@ -18,11 +18,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Api')->name('api.')->group(function(){
-    Route::prefix('anunciantes')->group(function(){
+
+    Route::prefix('usuarios')->group(function(){
         //Route GET
-        Route::get('/', 'AnuncianteController@index')->name('index_anunciantes');
-        Route::get('/{id}', 'AnuncianteController@show')->name('show_anunciantes');
+        Route::middleware('auth:api')->get('/', 'UserController@index')->name('index_users');
+        Route::get('/{id}', 'UserController@show')->name('show_users');
         //Route Post
-        Route::post('/', 'AnuncianteController@store')->name('store_anunciantes');
+        Route::post('/', 'UserController@store')->name('store_users');
+    });
+
+    Route::prefix('pedidos')->group(function(){
+        //Route GET
+        Route::get('/', 'PedidoController@index')->name('index_pedidos');
+        Route::get('/{id}', 'PedidoController@show')->name('show_pedidos');
+        //Route Post
+        Route::post('/', 'PedidoController@store')->name('store_pedidos');
     });
 });

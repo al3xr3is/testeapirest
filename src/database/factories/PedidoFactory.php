@@ -7,10 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Pedido::class, function (Faker $faker) {
     return [
-        'descricao' => $faker->text,
-        'endereco' => $faker->address,
-        'status' => $faker->randomElement(['aberto', 'finalizado']),
-        'peca_id' => App\Peca::all(['id'])->random(),
-        'anunciante_id' => App\Anunciante::all(['id'])->random()
+        'description' => $faker->text,
+        'status' => $faker->randomElement(['src/Assets/baseline-check_circle_outline.svg', 'src/Assets/baseline-highlight_off.svg']),
+        'adress' => $faker->address,
+        'pecas_id' => App\Peca::all(['id'])->random(),
+        'users_id' => App\User::all(['id'])->random()
     ];
 });

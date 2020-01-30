@@ -8,5 +8,13 @@ class Pedido extends Model
 {
     protected $table = 'pedidos';
 
-    protected $fillable = ['descricao', 'endereco', 'status', 'peca_id', 'anunciante_id'];
+    protected $fillable = ['description', 'status', 'adress', 'pecas_id', 'users_id'];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
+
+    public function pecas(){
+        return $this->belongsToMany(Peca::class);
+    }
 }

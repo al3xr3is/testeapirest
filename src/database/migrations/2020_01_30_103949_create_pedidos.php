@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePedidos extends Migration
+class CreatePedidos extends Migration
 {
     /**
      * Run the migrations.
@@ -15,12 +15,14 @@ class CreateTablePedidos extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao');
-            $table->string('endereco');
-            $table->enum('status', ['aberto', 'finalizado']);
+            $table->string('description');
+            $table->enum('status', [
+                'src/Assets/baseline-check_circle_outline.svg',
+                'src/Assets/baseline-highlight_off.svg']);
+            $table->string('adress');
+            $table->bigInteger('pecas_id')->unsigned();
+            $table->bigInteger('users_id')->unsigned();
             $table->timestamps();
-            $table->bigInteger('peca_id')->unsigned();
-            $table->bigInteger('anunciante_id')->unsigned();
         });
     }
 

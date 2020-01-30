@@ -8,13 +8,9 @@ class Peca extends Model
 {
     protected $table = 'pecas';
 
-    protected $fillable = ['nome', 'descricao', 'preco', 'anunciante_id'];
+    protected $fillable = ['name', 'description', 'users_id'];
 
-    public function anunciantes(){
-        return $this->belongsToMany(Anunciante::class);
-    }
-
-    public function pedidos(){
-        return $this->belongsToMany(Pedido::class);
+    public function users(){
+        return $this->belongsToMany(User::class);
     }
 }

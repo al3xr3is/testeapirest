@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PecaTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class PecaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Peca::class, 10)->create();
+        factory(\App\User::class, 8)->create();
     }
 }

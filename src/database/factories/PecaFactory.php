@@ -7,9 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Peca::class, function (Faker $faker) {
     return [
-        'nome' => $faker->word,
-        'descricao' => $faker->text,
-        'preco' => $faker->randomFloat(2, 0, 8),
-        'anunciante_id' => App\Anunciante::all(['id'])->random()
+        'name' => $faker->word,
+        'description' => $faker->text,
+        'users_id' => App\User::all(['id'])->random()
     ];
 });

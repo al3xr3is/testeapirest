@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ConstraintAnunciantePeca extends Migration
+class ConstraintPedidoPecasUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class ConstraintAnunciantePeca extends Migration
      */
     public function up()
     {
-        Schema::table('anunciantes', function (Blueprint $table) {
-            Schema::table('anunciantes', function($table) {
-                $table->foreign('peca_id')
+        Schema::table('pedidos', function (Blueprint $table) {
+            Schema::table('pedidos', function($table) {
+                $table->foreign('users_id')
                     ->references('id')
-                    ->on('pecas')
+                    ->on('users')
                     ->onDelete('cascade');
               });
 
-              Schema::table('anunciantes', function($table) {
-                $table->foreign('pedido_id')
+              Schema::table('pedidos', function($table) {
+                $table->foreign('pecas_id')
                     ->references('id')
-                    ->on('pedidos')
+                    ->on('pecas')
                     ->onDelete('cascade');
               });
         });
@@ -37,7 +37,7 @@ class ConstraintAnunciantePeca extends Migration
      */
     public function down()
     {
-        Schema::table('anunciantes', function (Blueprint $table) {
+        Schema::table('pedidos', function (Blueprint $table) {
             //
         });
     }

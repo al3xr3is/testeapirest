@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Anunciante;
+use App\User;
 use App\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AnuncianteController extends Controller
+class UserController extends Controller
 {
-    private $anunciante;
+    private $user;
 
-    public function __construct(Anunciante $anunciante) {
-        $this->anunciante = $anunciante;
+    public function __construct(User $user) {
+        $this->user = $user;
     }
 
     public function index() {
         try {
-            return response()->json($data = ['data' => $this->anunciante->paginate(10)]);
+            return response()->json($data = ['data' => $this->user->paginate(10)]);
         }
         catch(\Exception $e) {
             if(config('app.debut')) {
@@ -27,7 +27,7 @@ class AnuncianteController extends Controller
         }
     }
 
-    public function show(Anunciante $id) {
+    public function show(User $id) {
         try {
             return response()->json($data = ['data' => $id]);
         }
@@ -41,14 +41,14 @@ class AnuncianteController extends Controller
 
     public function store(Request $request) {
         try {
-            $this->anunciante->create($data = $request->all());
-            return response()->json(['msg' => 'Anunciante criado com sucesso!', 'status' => 201]);
+            $this->user->create($data = $request->all());
+            return response()->json(['msg' => 'Usuário criado com sucesso!', 'status' => 201]);
         }
         catch(\Exception $e) {
             if(config('app.debug')) {
-                return response()->json(ApiError::errorMessage($e->getMessage(), 'status' => 1010));
+                return response()->json(ApiError::errorMessage($e->getMessage(), 1010));
             }
-            return response()->json(ApiError::errorMessage('Houve um erro ao realizar a operação', 'statu' => 1010));
+            return response()->json(ApiError::errorMessage('Houve um erro ao realizar a operação', 1010));
         }
     }
 }
